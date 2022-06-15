@@ -48,12 +48,22 @@ export class PipelineStack extends cdk.Stack {
             )
         });
 
-        // Pre-prod
+        // Test Env deployment
         
-       /* const preProdApp = new WebServiceStage(this, 'Pre-Prod');
-        const preProdStage = pipeline.addApplicationStage(preProdApp);
-        const serviceUrl = pipeline.stackOutput(preProdApp.urlOutput);
-
+        const testApp = new WebServiceStage(this, 'Test');
+        const preProdStage = pipeline.addStage(testApp, {
+            post: [
+                new ShellStep('HitEndpoint', {
+                  envFromCfnOutputs: {
+                    // Make the load balancer address available as $URL inside the commands
+                    URL: testApp.urlOutput,
+                  },
+                  commands: ['curl -Ssf $URL'],
+                }),
+              ],
+        });
+        //const serviceUrl = pipeline. (preProdApp.urlOutput);
+        /*
         preProdStage.addActions(new pipelines.ShellScriptAction({
             actionName: 'IntegrationTests',
             runOrder: preProdStage.nextSequentialRunOrder(),

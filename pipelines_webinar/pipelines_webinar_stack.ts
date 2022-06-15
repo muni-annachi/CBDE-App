@@ -2,14 +2,13 @@ import path = require('path');
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
-import { CfnOutput, Duration, Stack, StackProps } from 'aws-cdk-lib/core';
 import * as lambda from 'aws-cdk-lib/aws-lambda'
 import * as apigw from 'aws-cdk-lib/aws-apigateway'
 import * as codedeploy from 'aws-cdk-lib/aws-codedeploy'
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 
 export class PipelinesWebinarStack extends cdk.Stack {
-  urlOutput: CfnOutput;
+  urlOutput: cdk.CfnOutput;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -37,7 +36,7 @@ export class PipelinesWebinarStack extends cdk.Stack {
         ApiName: 'Gateway'
       },*/
       statistic: 'Sum',
-      period: Duration.minutes(1)
+      period: cdk.Duration.minutes(1)
     });
     const failureAlarm = new cloudwatch.Alarm(this, 'RollbackAlarm', {
       metric: apiGateway5xx,
@@ -53,6 +52,6 @@ export class PipelinesWebinarStack extends cdk.Stack {
       ]
     });
 
-    this.urlOutput = new CfnOutput(this, 'url', { value: api.url });
+    this.urlOutput = new cdk.CfnOutput(this, 'url', { value: api.url });
   }
 }
