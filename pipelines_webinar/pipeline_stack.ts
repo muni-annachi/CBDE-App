@@ -1,17 +1,15 @@
-import { Construct, SecretValue, Stack, StackProps } from '@aws-cdk/core';
-import * as cp from '@aws-cdk/aws-codepipeline';
-import * as cpa from '@aws-cdk/aws-codepipeline-actions';
-import * as pipelines from '@aws-cdk/pipelines';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { WebServiceStage } from './webservice_stage';
+import {CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep} from "aws-cdk-lib/pipelines";
 
-export class PipelineStack extends Stack {
-    constructor(scope: Construct, id: string, props?: StackProps) {
+
+export class PipelineStack extends cdk.Stack {
+    constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
-        const sourceArtifact = new cp.Artifact();
-        const cloudAssemblyArtifact = new cp.Artifact();
-
-        const sourceAction = new cpa.GitHubSourceAction({
+      
+       /* const sourceAction = new cpa.GitHubSourceAction({
             actionName: 'GitHub',
             output: sourceArtifact,
             oauthToken: SecretValue.secretsManager('github-token'),
@@ -25,15 +23,33 @@ export class PipelineStack extends Stack {
             buildCommand: 'npm run build && npm test',
         });
 
-        const pipeline = new pipelines.CdkPipeline(this, 'Pipeline', {
+        const pipeline1 = new pipelines.CdkPipeline(this, 'Pipeline', {
             cloudAssemblyArtifact,
             sourceAction,
             synthAction
+        });*/
+
+        const pipeline = new CodePipeline(this, 'Pipeline', {
+            pipelineName: 'do-not-delete-CDK-Infra-Pipeline',
+            synth: new CodeBuildStep('SynthStep', {
+                    input: 
+                    CodePipelineSource.connection('muni-annachi/CBDE-App','main', {
+                        connectionArn: 'arn:aws:codestar-connections:us-east-1:786424842112:connection/959ee911-2718-465a-865f-effebf701291',
+                      }),
+                    installCommands: [
+                        'npm install -g aws-cdk'
+                    ],
+                    commands: [
+                        'npm install',
+                        'cdk synth'
+                    ]
+                }
+            )
         });
 
         // Pre-prod
         //
-        const preProdApp = new WebServiceStage(this, 'Pre-Prod');
+       /* const preProdApp = new WebServiceStage(this, 'Pre-Prod');
         const preProdStage = pipeline.addApplicationStage(preProdApp);
         const serviceUrl = pipeline.stackOutput(preProdApp.urlOutput);
 
@@ -57,5 +73,6 @@ export class PipelineStack extends Stack {
         //
         const prodApp = new WebServiceStage(this, 'Prod');
         const prodStage = pipeline.addApplicationStage(prodApp);
+        */
     }
 }

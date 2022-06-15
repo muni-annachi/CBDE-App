@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import { App } from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
 import { PipelineStack } from './pipelines_webinar/pipeline_stack';
 
-const app = new App();
+const app = new cdk.App();
 
 new PipelineStack(app, 'PipelineStack');
 
