@@ -31,19 +31,18 @@ export class PipelineStack extends cdk.Stack {
 
         const pipeline = new CodePipeline(this, 'Pipeline', {
             pipelineName: 'do-not-delete-CDK-Infra-Pipeline',
-            synth: new CodeBuildStep('SynthStep', {
+            synth: new ShellStep('SynthStep', {
                     input: 
                     CodePipelineSource.connection('muni-annachi/CBDE-App','main', {
                         connectionArn: 'arn:aws:codestar-connections:us-east-1:786424842112:connection/959ee911-2718-465a-865f-effebf701291',
                       }),
-                    installCommands: [
+                    /*installCommands: [
                         'npm install -g aws-cdk'
-                    ],
+                    ],*/
                     commands: [
                         'npm ci',
                         'npm run build',
-                        'npm install',
-                        'cdk synth'
+                        'npx cdk synth'
                     ]
                 }
             )
