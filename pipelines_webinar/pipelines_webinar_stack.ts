@@ -1,14 +1,17 @@
 import path = require('path');
-import { CfnOutput, Construct, Duration, Stack, StackProps } from '@aws-cdk/core';
-import * as lambda from '@aws-cdk/aws-lambda'
-import * as apigw from '@aws-cdk/aws-apigateway'
-import * as codedeploy from '@aws-cdk/aws-codedeploy'
-import * as cloudwatch from '@aws-cdk/aws-cloudwatch';
+import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
-export class PipelinesWebinarStack extends Stack {
+import { CfnOutput, Duration, Stack, StackProps } from 'aws-cdk-lib/core';
+import * as lambda from 'aws-cdk-lib/aws-lambda'
+import * as apigw from 'aws-cdk-lib/aws-apigateway'
+import * as codedeploy from 'aws-cdk-lib/aws-codedeploy'
+import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
+
+export class PipelinesWebinarStack extends cdk.Stack {
   urlOutput: CfnOutput;
 
-  constructor(scope: Construct, id: string, props?: StackProps) {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const handler = new lambda.Function(this, 'Handler', {
@@ -30,9 +33,9 @@ export class PipelinesWebinarStack extends Stack {
     const apiGateway5xx = new cloudwatch.Metric({
       metricName: '5XXError',
       namespace: 'AWS/ApiGateway',
-      dimensions: {
+      /*dimensions: {
         ApiName: 'Gateway'
-      },
+      },*/
       statistic: 'Sum',
       period: Duration.minutes(1)
     });
