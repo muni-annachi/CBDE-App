@@ -1,9 +1,9 @@
-import { App } from '@aws-cdk/core';
+import * as cdk from 'aws-cdk-lib';
 import { PipelinesWebinarStack } from '../pipelines_webinar/pipelines_webinar_stack';
 
 test('Lambda Handler', () => {
   // GIVEN
-  const app = new App();
+  const app = new cdk.App();
 
   // WHEN
   new PipelinesWebinarStack(app, 'Stack');
