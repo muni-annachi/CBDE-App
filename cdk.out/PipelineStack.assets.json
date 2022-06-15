@@ -1,7 +1,7 @@
 {
   "version": "19.0.0",
   "files": {
-    "3a0c6032434c4259c2ba00c953ce2c4c69aee3cb77bf2088d805ea4dad3ce2a3": {
+    "f7a6381214875422ffd97caa17aa9deb2dfec93d550cb51ebed8cac57abf7286": {
       "source": {
         "path": "PipelineStack.template.json",
         "packaging": "file"
@@ -9,7 +9,7 @@
       "destinations": {
         "current_account-current_region": {
           "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
-          "objectKey": "3a0c6032434c4259c2ba00c953ce2c4c69aee3cb77bf2088d805ea4dad3ce2a3.json",
+          "objectKey": "f7a6381214875422ffd97caa17aa9deb2dfec93d550cb51ebed8cac57abf7286.json",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
         }
       }
