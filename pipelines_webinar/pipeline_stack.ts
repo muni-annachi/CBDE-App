@@ -43,7 +43,7 @@ export class PipelineStack extends cdk.Stack {
                         'npm ci',
                         'npm run build',
                         'npm install',
-                        'npm cdk synth'
+                        'cdk synth'
                     ]
                 }
             )
