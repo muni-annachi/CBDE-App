@@ -40,6 +40,7 @@ export class PipelineStack extends cdk.Stack {
                         'npm install -g aws-cdk'
                     ],
                     commands: [
+                        'pwd ',
                         'npm ci',
                         'npm run build',
                         'npx cdk synth'
@@ -62,9 +63,21 @@ export class PipelineStack extends cdk.Stack {
                 }),
               ],
         });
-        //const serviceUrl = pipeline. (preProdApp.urlOutput);
-        /*
-        preProdStage.addActions(new pipelines.ShellScriptAction({
+        const serviceUrl = testApp.urlOutput;
+       
+        preProdStage.addPost(new ShellStep('Integration Test', {
+            envFromCfnOutputs: {
+              // Make the load balancer address available as $URL inside the commands
+              SERVICE_URL: testApp.urlOutput,
+            },
+            commands: [
+                'npm install',
+                'npm run build',
+                'npm run integration'
+            ],
+          }));
+
+        /*preProdStage.addActions(new ShellStep({
             actionName: 'IntegrationTests',
             runOrder: preProdStage.nextSequentialRunOrder(),
             additionalArtifacts: [
@@ -82,6 +95,7 @@ export class PipelineStack extends cdk.Stack {
 
         // Prod
         //
+         
         const prodApp = new WebServiceStage(this, 'Prod');
         const prodStage = pipeline.addApplicationStage(prodApp);
         */
