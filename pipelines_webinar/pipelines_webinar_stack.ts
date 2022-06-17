@@ -24,7 +24,7 @@ export class PipelinesWebinarStack extends cdk.Stack {
       version: handler.currentVersion
     });
 
-    const api = new apigw.LambdaRestApi(this, 'Gateway', {
+    const api = new apigw.LambdaRestApi(this, 'Gateway'+props?.tags?.Environment, {
       description: 'Endpoint for a simple Lambda-powered web service',
       handler: alias,
       deploy: true,
