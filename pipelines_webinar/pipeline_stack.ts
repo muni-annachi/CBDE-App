@@ -77,27 +77,10 @@ export class PipelineStack extends cdk.Stack {
             ],
           }));
 
-        /*preProdStage.addActions(new ShellStep({
-            actionName: 'IntegrationTests',
-            runOrder: preProdStage.nextSequentialRunOrder(),
-            additionalArtifacts: [
-                sourceArtifact
-            ],
-            commands: [
-                'npm install',
-                'npm run build',
-                'npm run integration'
-            ],
-            useOutputs: {
-                SERVICE_URL: serviceUrl
-            }
-        }));
-
         // Prod
         //
          
         const prodApp = new WebServiceStage(this, 'Prod');
-        const prodStage = pipeline.addApplicationStage(prodApp);
-        */
+        const prodStage = pipeline.addStage(prodApp);
     }
 }
