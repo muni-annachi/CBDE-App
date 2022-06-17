@@ -53,7 +53,7 @@ export class PipelineStack extends cdk.Stack {
         
         const testApp = new WebServiceStage(this, 'Test');
         const preProdStage = pipeline.addStage(testApp, {
-            post: [
+            /*post: [
                 new ShellStep('HitEndpoint', {
                   envFromCfnOutputs: {
                     // Make the load balancer address available as $URL inside the commands
@@ -61,7 +61,7 @@ export class PipelineStack extends cdk.Stack {
                   },
                   commands: ['curl -Ssf $URL'],
                 }),
-              ],
+              ]*/
         });
         const serviceUrl = testApp.urlOutput;
        
