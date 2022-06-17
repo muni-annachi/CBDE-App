@@ -29,9 +29,11 @@ export class PipelinesWebinarStack extends cdk.Stack {
       handler: alias,
       deploy: true,
       deployOptions: {
-        stageName: 'dev'
+        stageName: props?.tags?.Environment
       }
     });
+
+    
 
     const apiGateway5xx = new cloudwatch.Metric({
       metricName: '5XXError',
