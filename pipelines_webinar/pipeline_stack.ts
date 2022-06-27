@@ -31,6 +31,7 @@ export class PipelineStack extends cdk.Stack {
 
         const pipeline = new CodePipeline(this, 'Pipeline', {
             pipelineName: 'do-not-delete-CDK-Infra-Pipeline',
+            crossAccountKeys: true,
             synth: new ShellStep('SynthStep', {
                     input: 
                     CodePipelineSource.connection('muni-annachi/CBDE-App','main', {
