@@ -2364,7 +2364,7 @@
                             },
                             "source": {
                               "type": "CODEPIPELINE",
-                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"98702033425bd8472d227ac3b2997fb48bd3df734ee5e3925bee41b21ad189a4:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
+                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"7e5a7d577ba235171e3dbe3f3fd132329102afd3cb004de0a635752a6cc1f8b5:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
                             },
                             "cache": {
                               "type": "NO_CACHE"
@@ -2493,7 +2493,7 @@
                               "s3Bucket": {
                                 "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                               },
-                              "s3Key": "98702033425bd8472d227ac3b2997fb48bd3df734ee5e3925bee41b21ad189a4.zip"
+                              "s3Key": "7e5a7d577ba235171e3dbe3f3fd132329102afd3cb004de0a635752a6cc1f8b5.zip"
                             },
                             "role": {
                               "Fn::GetAtt": [
@@ -2557,7 +2557,7 @@
                             },
                             "functionVersion": {
                               "Fn::GetAtt": [
-                                "HandlerCurrentVersion93FB80BFefd4e5be5ee3cbab8be03d354322335b",
+                                "HandlerCurrentVersion93FB80BF5d85e87f4c75c509e21940dad49b79a8",
                                 "Version"
                               ]
                             },
