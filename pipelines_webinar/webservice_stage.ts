@@ -10,7 +10,7 @@ export class WebServiceStage extends cdk.Stage {
 
     const service = new PipelinesWebinarStack(this, 'WebService', {
       env: {
-        account: "520761064845",
+        account: (id === 'Prod' ? "786424842112" :  "520761064845")  ,
         region: "us-east-1"
       },
       tags: {
