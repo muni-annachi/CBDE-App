@@ -56,13 +56,12 @@ export class PipelinesWebinarStack extends cdk.Stack {
   
       new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
         alias,
-        deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_10MINUTES,
+        deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_5MINUTES,
         alarms: [
           failureAlarm
         ]
       });
     }
-    
 
     this.urlOutput = new cdk.CfnOutput(this, 'url', { value: api.url });
   }

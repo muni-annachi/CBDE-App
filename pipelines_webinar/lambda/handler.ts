@@ -1,8 +1,11 @@
 const AWS = require('aws-sdk');
+const fs = require('fs');
+const html = fs.readFileSync('index.html', {encoding: 'utf8'});
+
 
 export const handler = async (event: any = {}): Promise<any> => {
 
-    const html = `
+   /* const html = `
   <html>
     <style>
       h1 { color: #73757d; }
@@ -11,7 +14,7 @@ export const handler = async (event: any = {}): Promise<any> => {
       <h1>Landing Page</h1>
       This is Landing Page
     </body>
-  </html>`;
+  </html>`;*/
 
     return {
         statusCode: 200,
