@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { WebServiceStage } from './webservice_stage';
-import {CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep} from "aws-cdk-lib/pipelines";
+import {CodeBuildStep, CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep} from "aws-cdk-lib/pipelines";
 
 
 export class PipelineStack extends cdk.Stack {
@@ -54,6 +54,11 @@ export class PipelineStack extends cdk.Stack {
         
         const testApp = new WebServiceStage(this, 'Test');
         const preProdStage = pipeline.addStage(testApp, {
+            pre: [
+                new ManualApprovalStep('Promote to Test ', {
+                    comment : " Pls approve to Test"
+                })
+              ],
             /*post: [
                 new ShellStep('HitEndpoint', {
                   envFromCfnOutputs: {
@@ -82,6 +87,12 @@ export class PipelineStack extends cdk.Stack {
         //
          
         const prodApp = new WebServiceStage(this, 'Prod');
-        const prodStage = pipeline.addStage(prodApp);
+        const prodStage = pipeline.addStage(prodApp , {
+            pre: [
+                new ManualApprovalStep('Promote to PROD ', {
+                    comment : " Pls approve to PROD"
+                })
+              ]
+        });
     }
 }
