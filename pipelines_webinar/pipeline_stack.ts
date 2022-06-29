@@ -54,11 +54,6 @@ export class PipelineStack extends cdk.Stack {
         
         const testApp = new WebServiceStage(this, 'Test');
         const preProdStage = pipeline.addStage(testApp, {
-            pre: [
-                new ManualApprovalStep('Promote to Test ', {
-                    comment : " Pls approve to Test"
-                })
-              ],
             /*post: [
                 new ShellStep('HitEndpoint', {
                   envFromCfnOutputs: {
