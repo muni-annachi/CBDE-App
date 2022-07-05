@@ -740,11 +740,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -763,11 +759,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -798,11 +790,7 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":codebuild:",
-          {
-           "Ref": "AWS::Region"
-          },
-          ":",
+          ":codebuild:us-east-1:",
           {
            "Ref": "AWS::AccountId"
           },
@@ -1144,11 +1132,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -1167,11 +1151,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -1202,11 +1182,7 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":codebuild:",
-          {
-           "Ref": "AWS::Region"
-          },
-          ":",
+          ":codebuild:us-east-1:",
           {
            "Ref": "AWS::AccountId"
           },
@@ -1405,11 +1381,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -1428,11 +1400,7 @@
            {
             "Ref": "AWS::Partition"
            },
-           ":logs:",
-           {
-            "Ref": "AWS::Region"
-           },
-           ":",
+           ":logs:us-east-1:",
            {
             "Ref": "AWS::AccountId"
            },
@@ -1463,11 +1431,7 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":codebuild:",
-          {
-           "Ref": "AWS::Region"
-          },
-          ":",
+          ":codebuild:us-east-1:",
           {
            "Ref": "AWS::AccountId"
           },
@@ -1655,11 +1619,7 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":logs:",
-          {
-           "Ref": "AWS::Region"
-          },
-          ":",
+          ":logs:us-east-1:",
           {
            "Ref": "AWS::AccountId"
           },
@@ -1685,11 +1645,7 @@
           {
            "Ref": "AWS::Partition"
           },
-          ":codebuild:",
-          {
-           "Ref": "AWS::Region"
-          },
-          ":",
+          ":codebuild:us-east-1:",
           {
            "Ref": "AWS::AccountId"
           },
@@ -1780,7 +1736,7 @@
      ]
     },
     "Source": {
-     "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"7e5a7d577ba235171e3dbe3f3fd132329102afd3cb004de0a635752a6cc1f8b5:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+     "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"6bee4a7634d710cf864d34f3b0c455c0fdf7eec8b875274ebe0c3f7a36582f97:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
      "Type": "CODEPIPELINE"
     },
     "Cache": {
@@ -1796,206 +1752,11 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/01QWw6CMBA8i/9lFYweQC5A8AAGtjVZKC3pQ2Oa3l2gIH7N7MxkJtkCigucDs3bZsj7TFIL4e4a7NlIo5CkhIVSc1GtF5uSj4CTsvkQfl75VBuPzJ4h3Dz2ws36yhJUWhJ+djndkVEzQKi1XJoW3JNbZp5uPUm+71ZGdwKXmZXGyGphtTeYqv54qRUnR1pFpqYq6OzxlV8hn7/QWaLMeOVoEFAn/AIOQ2SgIQEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0VP0Q6CMAz8Ft9HFYx+gPwAgQ8wUGpSGBthTGOW/bvAhjzd9Xq9SzPIbnA51R+TYNsnkhtw1VxjL0YeSbIiA7luqYiTWJxPh4uy78H9d/lL7dwLcwX3sNjTvOqRBSi0ZPwecpi94HoAV2q5JW14OHfPWt1Ylu3RW0y6I9xqIvVelGS0nTBERe6FWq6hM+d3eod0fbwzzMlk1cwDQRnwBzZ97O4UAQAA"
    },
    "Metadata": {
     "aws:cdk:path": "PipelineStack/CDKMetadata/Default"
-   },
-   "Condition": "CDKMetadataAvailable"
-  }
- },
- "Conditions": {
-  "CDKMetadataAvailable": {
-   "Fn::Or": [
-    {
-     "Fn::Or": [
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "af-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-northeast-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-northeast-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ap-southeast-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "ca-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "cn-north-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "cn-northwest-1"
-       ]
-      }
-     ]
-    },
-    {
-     "Fn::Or": [
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-central-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-north-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-2"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "eu-west-3"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "me-south-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "sa-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-east-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-east-2"
-       ]
-      }
-     ]
-    },
-    {
-     "Fn::Or": [
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-west-1"
-       ]
-      },
-      {
-       "Fn::Equals": [
-        {
-         "Ref": "AWS::Region"
-        },
-        "us-west-2"
-       ]
-      }
-     ]
-    }
-   ]
+   }
   }
  },
  "Parameters": {
