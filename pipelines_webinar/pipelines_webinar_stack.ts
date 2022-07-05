@@ -56,7 +56,7 @@ export class PipelinesWebinarStack extends cdk.Stack {
   
       new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
         alias,
-        deploymentConfig: codedeploy.LambdaDeploymentConfig.CANARY_10PERCENT_5MINUTES,
+        deploymentConfig: codedeploy.LambdaDeploymentConfig.LINEAR_10PERCENT_EVERY_1MINUTE,
         alarms: [
           failureAlarm
         ]
