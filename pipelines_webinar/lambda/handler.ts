@@ -17,7 +17,7 @@ export const handler = async (event: any = {}): Promise<any> => {
   </html>`;*/
 
     return {
-        statusCode: 200,
+        statusCode: 500,
         headers: {
         'Content-Type': 'text/html',
         },
