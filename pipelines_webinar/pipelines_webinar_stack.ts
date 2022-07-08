@@ -51,7 +51,7 @@ export class PipelinesWebinarStack extends cdk.Stack {
       const failureAlarm = new cloudwatch.Alarm(this, 'RollbackAlarm', {
         metric: apiGateway5xx,
         threshold: 1,
-        evaluationPeriods: 1,
+        evaluationPeriods: 1
       });
   
       new codedeploy.LambdaDeploymentGroup(this, 'DeploymentGroup ', {
