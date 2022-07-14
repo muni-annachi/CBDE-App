@@ -8,26 +8,7 @@ export class PipelineStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
-      
-       /* const sourceAction = new cpa.GitHubSourceAction({
-            actionName: 'GitHub',
-            output: sourceArtifact,
-            oauthToken: SecretValue.secretsManager('github-token'),
-            owner: 'OWNER',
-            repo: 'REPO',
-        });
-
-        const synthAction = pipelines.SimpleSynthAction.standardNpmSynth({
-            sourceArtifact,
-            cloudAssemblyArtifact,
-            buildCommand: 'npm run build && npm test',
-        });
-
-        const pipeline1 = new pipelines.CdkPipeline(this, 'Pipeline', {
-            cloudAssemblyArtifact,
-            sourceAction,
-            synthAction
-        });*/
+      // Pipeline for Zero Downtime deployments
 
         const pipeline = new CodePipeline(this, 'Pipeline', {
             pipelineName: 'do-not-delete-CDK-Infra-Pipeline',

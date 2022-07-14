@@ -13,7 +13,7 @@ class PipelinesWebinarStack extends cdk.Stack {
         const handler = new lambda.Function(this, 'Handler', {
             code: new lambda.AssetCode(path.resolve(__dirname, 'lambda')),
             handler: 'handler.handler',
-            runtime: lambda.Runtime.NODEJS_10_X,
+            runtime: lambda.Runtime.NODEJS_16_X,
         });
         const alias = new lambda.Alias(this, 'x', {
             aliasName: 'Current',
@@ -23,6 +23,7 @@ class PipelinesWebinarStack extends cdk.Stack {
             description: 'Endpoint for a simple Lambda-powered web service',
             handler: alias,
         });
+
         const apiGateway5xx = new cloudwatch.Metric({
             metricName: '5XXError',
             namespace: 'AWS/ApiGateway',
