@@ -2,11 +2,20 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { WebServiceStage } from './webservice_stage';
 import {CodeBuildStep, CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep} from "aws-cdk-lib/pipelines";
+import * as  s3 from 'aws-cdk-lib/aws-s3'
 
 
 export class PipelineStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
+
+        const cfnVersionsBucket = new s3.Bucket(scope, 'Bucket', {
+          blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+          encryption: s3.BucketEncryption.S3_MANAGED,
+          enforceSSL: true,
+          versioned: true,
+          removalPolicy: cdk.RemovalPolicy.RETAIN,
+        });
 
       // Pipeline for Zero Downtime deployments
 
@@ -22,7 +31,7 @@ export class PipelineStack extends cdk.Stack {
                         'npm install -g aws-cdk'
                     ],
                     commands: [
-                        'pwd ',
+                        'aws ',
                         'npm ci',
                         'npm run build',
                         'npx cdk synth'
@@ -69,6 +78,9 @@ export class PipelineStack extends cdk.Stack {
                     comment : " Pls approve to PROD"
                 })
               ],
+              stackSteps : [
+
+              ]
         });
     }
 }
