@@ -68,7 +68,7 @@ export class PipelineStack extends cdk.Stack {
                 new ManualApprovalStep('Promote to PROD ', {
                     comment : " Pls approve to PROD"
                 })
-              ]
+              ],
         });
     }
 }
