@@ -1736,7 +1736,7 @@
      ]
     },
     "Source": {
-     "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"6bee4a7634d710cf864d34f3b0c455c0fdf7eec8b875274ebe0c3f7a36582f97:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
+     "BuildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"5425502163399902ccef369d8dc6c496fd925400d77cb80ebef862454c635a96:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}",
      "Type": "CODEPIPELINE"
     },
     "Cache": {

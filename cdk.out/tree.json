@@ -2320,7 +2320,7 @@
                             },
                             "source": {
                               "type": "CODEPIPELINE",
-                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"6bee4a7634d710cf864d34f3b0c455c0fdf7eec8b875274ebe0c3f7a36582f97:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
+                              "buildSpec": "{\n  \"version\": \"0.2\",\n  \"phases\": {\n    \"install\": {\n      \"commands\": [\n        \"npm install -g cdk-assets@2\"\n      ]\n    },\n    \"build\": {\n      \"commands\": [\n        \"cdk-assets --path \\\"assembly-PipelineStack-Test/PipelineStackTestWebServiceBBADA7E6.assets.json\\\" --verbose publish \\\"5425502163399902ccef369d8dc6c496fd925400d77cb80ebef862454c635a96:current_account-current_region\\\"\"\n      ]\n    }\n  }\n}"
                             },
                             "cache": {
                               "type": "NO_CACHE"
@@ -2449,7 +2449,7 @@
                               "s3Bucket": {
                                 "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
                               },
-                              "s3Key": "6bee4a7634d710cf864d34f3b0c455c0fdf7eec8b875274ebe0c3f7a36582f97.zip"
+                              "s3Key": "5425502163399902ccef369d8dc6c496fd925400d77cb80ebef862454c635a96.zip"
                             },
                             "role": {
                               "Fn::GetAtt": [
@@ -2458,7 +2458,7 @@
                               ]
                             },
                             "handler": "handler.handler",
-                            "runtime": "nodejs10.x"
+                            "runtime": "nodejs16.x"
                           }
                         },
                         "constructInfo": {
@@ -2513,7 +2513,7 @@
                             },
                             "functionVersion": {
                               "Fn::GetAtt": [
-                                "HandlerCurrentVersion93FB80BF60a4e8b2030be62477ef8a9ea4153742",
+                                "HandlerCurrentVersion93FB80BFfc948ddf726bd9d2fe706946b4d74eae",
                                 "Version"
                               ]
                             },
