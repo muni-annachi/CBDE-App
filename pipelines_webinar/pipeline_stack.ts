@@ -35,7 +35,9 @@ export class PipelineStack extends cdk.Stack {
                         'aws --version',
                         'npm ci',
                         'npm run build',
-                        'npx cdk synth'
+                        'npx cdk synth',
+                        'npx cdk synth > template.yaml',
+                        `aws s3 cp template.yaml s3://${cfnVersionsBucket.bucketName}/`,
                     ],
 
                 }
