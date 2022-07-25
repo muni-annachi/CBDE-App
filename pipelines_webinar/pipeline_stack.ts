@@ -75,7 +75,8 @@ export class PipelineStack extends cdk.Stack {
           commands: [
               'npx cdk synth > template.yaml',
               `aws s3 cp current-template.yaml s3://${cfnVersionsBucket.bucketName}/`,
-          ],
+          ]
+
         }));
        
         preProdStage.addPost(new ShellStep('Integration Test', {
