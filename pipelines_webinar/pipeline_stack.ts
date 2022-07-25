@@ -10,7 +10,7 @@ export class PipelineStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
         super(scope, id, props);
 
-        const cfnVersionsBucket = new s3.Bucket(this, 'Bucket', {
+        /*const cfnVersionsBucket = new s3.Bucket(this, 'Bucket', {
           blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
           encryption: s3.BucketEncryption.S3_MANAGED,
           enforceSSL: true,
@@ -23,7 +23,7 @@ export class PipelineStack extends cdk.Stack {
           resources: [`${cfnVersionsBucket.bucketArn}/*`],
           principals: [new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/Admin`), 
           new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/PipelineStack-PipelineTestCopycurrentstackCopycurr-OZ1N1GC7KF9V`)]
-        }));
+        }));*/
 
       // Pipeline for Zero Downtime deployments
 
@@ -39,13 +39,9 @@ export class PipelineStack extends cdk.Stack {
                         'npm install -g aws-cdk'
                     ],
                     commands: [
-                        'aws --version',
                         'npm ci',
                         'npm run build',
-                        'npx cdk synth',
-                        'npx cdk synth > template.yaml',
-                        'cat template.yaml',
-                        `aws s3 cp template.yaml s3://${cfnVersionsBucket.bucketName}/`,
+                        'npx cdk synth'
                     ],
 
                 }
@@ -67,7 +63,7 @@ export class PipelineStack extends cdk.Stack {
               ]*/
         });
         const serviceUrl = testApp.urlOutput;
-
+      /*
         preProdStage.addPre(new ShellStep('Copy current stack', {
           installCommands: [
             'npm install -g aws-cdk'
@@ -78,7 +74,7 @@ export class PipelineStack extends cdk.Stack {
           ]
 
         }));
-       
+       */
         preProdStage.addPost(new ShellStep('Integration Test', {
             envFromCfnOutputs: {
               // Make the load balancer address available as $URL inside the commands
