@@ -68,9 +68,12 @@ export class PipelineStack extends cdk.Stack {
         const serviceUrl = testApp.urlOutput;
 
         preProdStage.addPre(new ShellStep('Copy current stack', {
+          installCommands: [
+            'npm install -g aws-cdk'
+        ],
           commands: [
               'npx cdk synth > template.yaml',
-              `aws s3 cp template.yaml s3://${cfnVersionsBucket.bucketName}/`,
+              `aws s3 cp current-template.yaml s3://${cfnVersionsBucket.bucketName}/`,
           ],
         }));
        
