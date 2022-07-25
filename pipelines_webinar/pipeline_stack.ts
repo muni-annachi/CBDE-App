@@ -21,7 +21,9 @@ export class PipelineStack extends cdk.Stack {
         const result = cfnVersionsBucket.addToResourcePolicy(new iam.PolicyStatement({
           actions: ['s3:*'],
           resources: [`${cfnVersionsBucket.bucketArn}/*`],
-          principals: [new iam.AccountPrincipal(cdk.Stack.of(this).account)],
+          principals: [new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/Admin`)],
+          //principals: [new iam.StarPrincipal()],
+
         }));
 
       // Pipeline for Zero Downtime deployments
