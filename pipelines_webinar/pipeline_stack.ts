@@ -20,7 +20,7 @@ export class PipelineStack extends cdk.Stack {
 
         const result = cfnVersionsBucket.addToResourcePolicy(new iam.PolicyStatement({
           actions: ['s3:*'],
-          resources: ['*'],
+          resources: [`${cfnVersionsBucket.bucketArn}/*`],
           principals: [new iam.AccountPrincipal(cdk.Stack.of(this).account)],
         }));
 
