@@ -21,7 +21,8 @@ export class PipelineStack extends cdk.Stack {
         const result = cfnVersionsBucket.addToResourcePolicy(new iam.PolicyStatement({
           actions: ['s3:*'],
           resources: [`${cfnVersionsBucket.bucketArn}/*`],
-          principals: [new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/Admin`)]
+          principals: [new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/Admin`), 
+          new iam.ArnPrincipal(`arn:aws:iam::${this.account}:role/PipelineStack-PipelineTestCopycurrentstackCopycurr-OZ1N1GC7KF9V`)]
         }));
 
       // Pipeline for Zero Downtime deployments
@@ -66,6 +67,7 @@ export class PipelineStack extends cdk.Stack {
               ]*/
         });
         const serviceUrl = testApp.urlOutput;
+        preProdStage.stacks[0].
 
         preProdStage.addPre(new ShellStep('Copy current stack', {
           installCommands: [
