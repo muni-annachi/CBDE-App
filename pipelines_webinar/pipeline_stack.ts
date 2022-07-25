@@ -67,7 +67,6 @@ export class PipelineStack extends cdk.Stack {
               ]*/
         });
         const serviceUrl = testApp.urlOutput;
-        preProdStage.stacks[0].
 
         preProdStage.addPre(new ShellStep('Copy current stack', {
           installCommands: [
