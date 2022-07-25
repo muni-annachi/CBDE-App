@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import { WebServiceStage } from './webservice_stage';
 import {CodeBuildStep, CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep} from "aws-cdk-lib/pipelines";
 import * as  s3 from 'aws-cdk-lib/aws-s3'
+import * as assets from 'aws-cdk-lib/aws-s3-assets'
 
 
 export class PipelineStack extends cdk.Stack {
@@ -56,6 +57,13 @@ export class PipelineStack extends cdk.Stack {
               ]*/
         });
         const serviceUrl = testApp.urlOutput;
+
+        preProdStage.addPre(new ShellStep('Copy current stack', {
+          commands: [
+              'npx cdk synth > template.yaml',
+              `aws s3 cp template.yaml s3://${cfnVersionsBucket.bucketName}/`,
+          ],
+        }));
        
         preProdStage.addPost(new ShellStep('Integration Test', {
             envFromCfnOutputs: {
