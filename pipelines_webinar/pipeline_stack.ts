@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import { WebServiceStage } from './webservice_stage';
 import {CodeBuildStep, CodePipeline, CodePipelineSource, ManualApprovalStep, ShellStep} from "aws-cdk-lib/pipelines";
 import * as  s3 from 'aws-cdk-lib/aws-s3'
-import * as assets from 'aws-cdk-lib/aws-s3-assets'
+import * as iam from 'aws-cdk-lib/aws-iam'
 
 
 export class PipelineStack extends cdk.Stack {
@@ -17,6 +17,12 @@ export class PipelineStack extends cdk.Stack {
           versioned: true,
           removalPolicy: cdk.RemovalPolicy.RETAIN,
         });
+
+        const result = cfnVersionsBucket.addToResourcePolicy(new iam.PolicyStatement({
+          actions: ['s3:*'],
+          resources: ['*'],
+          principals: [new iam.AccountPrincipal(cdk.Stack.of(this).account)],
+        }));
 
       // Pipeline for Zero Downtime deployments
 
